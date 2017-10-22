@@ -1,0 +1,46 @@
+<html>
+<head>
+	<title>Pokeworld - React.js</title>
+</head>
+<body>
+	<section id="container"></section>
+	<script src="http://fb.me/react-0.13.3.js"></script>
+	<script src="http://fb.me/JSXTransformer-0.13.3.js"></script>
+	<script type="text/jsx;harmony=true">
+		var pokemons = [
+			{ number: 1, name: 'Bulbasur'},
+			{ number: 2, name: 'Ivysur'},
+			{ number: 3, name: 'Venausur'}
+		];
+		class PokeAvatar extends React.Component{
+			render() {
+				var url = `http://veekun.com/dex/media/pokemon/main-sprites/x-y/${this.props.number}.png`;
+				return <img src={url}/>
+			}
+		}		
+		class PokeRow extends React.Component{
+			render() {
+				return <li>
+					<PokeAvatar number={this.props.number}/>
+					{this.props.name}
+				</li>	
+			}
+		}
+		class PokeTable extends React.Component{
+			render() {
+				return <ul>
+					{
+						this.props.pokemons.map((pokemon) => {
+							return <PokeRow key={pokemon.number} name={pokemon.name} number={pokemon.number} /> 
+						})
+					}
+				</ul>
+			}
+		}
+		var pokemon = pokemons[0];
+		React.render(
+			<PokeTable pokemons={pokemons} />, document.getElementById('container')
+		)
+	</script>
+</body>
+</html>
