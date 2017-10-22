@@ -1,0 +1,11 @@
+{
+	"name": "pokechat",
+	"dependencies": {
+		"babelify": "^7.3.0",
+		"browserify": "^14.5.0",
+		"react": "^16.0.0"
+	},
+	"scripts": {
+		"build": "browserify app.js > build.js -t babelify"
+	}
+}
